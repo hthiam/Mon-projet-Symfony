@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+        <section class="article" style="width: 50%; margin-right: auto; margin-left: auto; padding= 10px;">
+            <div class="card" style="margin-top: 20px; padding: 15px;">
+                <div class="title">
+                    <h5>
+                        {{article.title}}
+                    </h5>
+                </div>
+                <div class="pseudo">
+                    <strong>
+                        <p>
+                            {{article.pseudo}}
+                        </p>
+                    </strong>
+                </div>
+                <div class="metadata">
+                    {{article.createdAt |date('d/m/Y') }}
+                    à
+                    {{article.createdAt |date('H/i') }}</div>
+                <div class="categorie">
+                    <p>
+                        {{article.categorie}}
+                    </p>
+                </div>
+                <div class="content">
+                    <p>
+                        {{article.content | raw}}
+                    </p>
+                </div>
+        </section>
+    
+
+
+
+{% endblock %}
+    
+    

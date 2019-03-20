@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig'%}
+<div class="container" style="width: 75%;  margin-top: 25px;">
+    
+
+{{ form_start(formArticle)}}
+
+{{form_row(formArticle.title, {'attr':{'placeholder':"Titre"}})}}
+{{form_row(formArticle.pseudo, {'attr':{'placeholder':"Pseudo"}})}}
+{{form_row(formArticle.categorie, {'attr':{'placeholder':"Categorie"}})}}
+{{form_row(formArticle.content, {'attr':{'placeholder':"Texte"}})}}
+<button type="submit" class="btn btn-primary">  Publier </button>
+
+
+{{form_end(formArticle)}}
+</div>
+                        
+
+{% endblock %}

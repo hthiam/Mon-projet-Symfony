@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="card border-primary mb-3" style="max-width: 20rem; margin-top: 100px;">
+                    <div class="card-body">
+                        <h4 class="card-title">Selectionnez votre choix</h4>
+                        <form>
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Où ?</label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>-- --</option>
+                                        <option>Paris 75 000</option>
+                                        <option>Seine Saint Denis 93 000</option>
+                                        <option>Haute Seine 92 000</option>
+                                        <option>Essone 91 000</option>
+                                        <option>Val d'Oise 95 000</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Categorie de Service</label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>-- --</option>
+                                        <option>Bricolage</option>
+                                        <option>Jardinage</option>
+                                        <option>Depannage - Réparation Véhicule</option>
+                                        <option>Service Véhiculés</option>
+                                        <option>Informatique et Web</option>
+                                    </select>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <button class="btn btn-primary" type="submit">Filtrer</button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="card border-0" style="text-align:center; margin-top:25px;">
+                    <h2>Annonces du jour</h2>
+                </div>
+                <div class="container" style="width: 100%;  margin-top: 25px;">
+                    {% for article in articles | reverse  %}
+                        <section class="article" style="width: 100%; margin-right: 25px; margin-left: 25px; padding= 10px;">
+                            <div class="block" style="width:100%; display:flex; flex-direction:row;">
+                                <div class="card-header" style="width:100%;">
+                                    <h5>
+                                        {{article.title}}</h5>
+                                </div>
+                                <div class="card-header" style="width:20%; text-align: right;">
+                                    <strong>
+                                        <p>
+                                            {{article.categorie}}</p>
+                                    </strong>
+                                </div>
+                            </div>
+                            <div class="card" style="margin-bottom: 20px; padding: 15px;">
+                                <div class="pseudo">
+                                    <strong>
+                                        <p>
+                                            {{article.pseudo}}
+                                        </p>
+                                    </strong>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="content">
+                                    <p>
+                                        {{article.content | raw}}
+                                    </p>
+                                    <div class="block" style="width:100%; display:flex; flex-direction:row;">
+                                        <a href="{{ path('blog_show', {'id': article.id})}}" class="btn btn-primary" style="width:20%;margin-bottom:-5px;">lire la suite</a>
+                                        <div class="metadata" style="width:80%; text-align: right;">
+                                            {{article.createdAt |date('d/m/Y') }}
+                                            à
+                                            {{article.createdAt |date('H:i') }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>{% endblock %}
